@@ -5,7 +5,6 @@
 
 .App-logo {
   height: 40vmin;
-  pointer-events: none;
 }
 
 .App-header {
@@ -19,7 +18,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #626977;
 }
 
 @keyframes App-logo-spin {
@@ -33,39 +32,49 @@
 
 .App_form {
   justify-content: space-between;
-  width: 80%;
+  width: 50%;
   margin: 50px auto;
+  padding: 50px 50px;
+  background-color: #191F2B;
+  border-radius: 20px;
 }
 
 input {
-  width: calc(50% - 50px);
+  width: calc(50%);
   padding: 10px;
   margin-bottom: 40px;
+  margin-top: 20px;
   border: 1px solid;
   border-radius: 20px;
   box-sizing: border-box;
 }
 
 select {
-  width: calc(50% - 50px);
+  width: calc(20%);
   padding: 10px;
   margin-bottom: 40px;
+  margin-top: 20px;
   border: 1px solid;
   border-radius: 20px;
   box-sizing: border-box;
 }
 
 button[type="submit"] {
-  width: 30%;
+  width: 35%;
   padding: 10px;
-  margin-bottom: 40px;
   border: 1px solid;
   border-radius: 20px;
   cursor: pointer;
 }
 
-.Titre_h2 {
+label {
   color: white;
+  margin: 10px;
+}
+
+h2 {
+  color: white;
+  padding-bottom: 20px;
 }
 
 .App_footer {

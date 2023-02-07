@@ -19,14 +19,11 @@ function App() {
       </header>
 
       <body>
-        <div className="Titre_h2"
-            id="forms"
-        >
-            <h2>Formulaire de création</h2>
-        </div>
-        <div className="App_form">
-          <Form/>
-        </div>
+          <div className="App_form">
+                <h2 id="forms">
+                    Formulaire de création</h2>
+              <Form/>
+            </div>
       </body>
 
         <footer>

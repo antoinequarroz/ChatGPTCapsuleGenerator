@@ -47,58 +47,84 @@ function Form() {
     return (
         <div>
         <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                name="Question et thème"
-                value={inputs.input1}
-                onChange={handleChange}
-                placeholder="Question et thème"
-            />
-            <select value={inputs.input2}
-                    onChange={handleChange}
-                    name="Temps Capsule"
-                    placeholder="Temps de la capsule">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
+            <div>
+                <label className="App_label">Question et thème</label>
+                <br/>
+                    <input
+                        type="text"
+                        name="Question et thème"
+                        value={inputs.input1}
+                        onChange={handleChange}
+                        placeholder="Question et thème"
+                    />
+            </div>
 
-            <select value={inputs.input3}
-                    onChange={handleChange}
-                    name="Nbr modules"
-                    placeholder="Nombre de modules">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
+            <div>
+                <label className="App_label">Temps de la capsule</label>
+                <br/>
+                    <select value={inputs.input2}
+                            onChange={handleChange}
+                            name="Temps Capsule"
+                            placeholder="Temps de la capsule">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
             </select>
+            </div>
 
-            <select value={inputs.input4}
-                    onChange={handleChange}
-                    name="Nbr sections"
-                    placeholder="Nombre de sections">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-            </select>
+            <div>
+                <label className="App_label">Nombre de modules</label>
+                <br/>
+                    <select value={inputs.input3}
+                            onChange={handleChange}
+                            name="Nbr modules"
+                            placeholder="Nombre de modules">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+            </div>
 
-            <select value={inputs.input5}
-                    onChange={handleChange}
-                    name="Nbr genre"
-                    placeholder="Genre">
-                <option value="Homme">Homme</option>
-                <option value="Femme">Femme</option>
-            </select>
+            <div>
+                <label className="App_label">Nombre de sections</label>
+                <br/>
+                    <select value={inputs.input4}
+                            onChange={handleChange}
+                            name="Nbr sections"
+                            placeholder="Nombre de sections">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+            </div>
 
-            <select value={inputs.input6}
-                    onChange={handleChange}
-                    name="Langue"
-                    placeholder="Langue">
-                <option value="Français">Français</option>
-                <option value="Deutsch">Deutsch</option>
-                <option value="English">English</option>
-            </select>
+            <div>
+                <label className="App_label">Genre</label>
+                <br/>
+                    <select value={inputs.input5}
+                            onChange={handleChange}
+                            name="Nbr genre"
+                            placeholder="Genre">
+                        <option value="Homme">Homme</option>
+                        <option value="Femme">Femme</option>
+                    </select>
+            </div>
+
+
+            <div>
+                <label className="App_label">Langue</label>
+                <br/>
+                    <select value={inputs.input6}
+                            onChange={handleChange}
+                            name="Langue"
+                            placeholder="Langue">
+                        <option value="Français">Français</option>
+                        <option value="Deutsch">Deutsch</option>
+                        <option value="English">English</option>
+                    </select>
+            </div>
 
             <button type="submit">Générer</button>
         </form>
