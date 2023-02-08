@@ -19,12 +19,28 @@ const Formular = () => {
         console.log(`Select 4 : ${select4}`);
         console.log(`Select 5 : ${select5}`);
 
+        const { Configuration, OpenAIApi } = require("openai");
+
+        const configuration = new Configuration({
+            apiKey: process.env.OPENAI_API_KEY,
+        });
+        const openai = new OpenAIApi(configuration);
+
+        const response = await openai.createCompletion({
+            model: "text-davinci-003",
+            prompt: "Crée moi une formation de 25 heure (Ajouter l'input du formulaire à la place du nombre) qui sera faite en capsules vidéo de (Nbr de modules et de section) en (Langues). La thématique sera l'introduction à la santé digitale (Input 1 de la question). Propose moi une table des matière et scénario. Et par la suite créer moi un texte de 25 lignes pour chaques modules et sections de cette formation.",
+            temperature: 0.39,
+            max_tokens: 3841,
+            top_p: 1,
+            frequency_penalty: 0,
+            presence_penalty: 0,
+        });
         // Faire une requête API vers OpenAI ici, en utilisant text, select1, select2, etc. pour construire la requête
         // Enregistrer la réponse dans un fichier texte
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="mb-3" onSubmit={handleSubmit}>
             <div>
                 <label className="App_label">Question et thème</label>
                 <br/>
@@ -111,3 +127,23 @@ const Formular = () => {
 };
 
 export default Formular;
+
+
+/*
+const { Configuration, OpenAIApi } = require("openai");
+
+const configuration = new Configuration({
+    apiKey: process.env.OPENAI_API_KEY,
+});
+const openai = new OpenAIApi(configuration);
+
+const response = await openai.createCompletion({
+    model: "text-davinci-003",
+    prompt: "Crée moi une formation de 25 heure (Ajouter l'input du formulaire à la place du nombre) qui sera faite en capsules vidéo de (Nbr de modules et de section) en (Langues). La thématique sera l'introduction à la santé digitale (Input 1 de la question). Propose moi une table des matière et scénario. Et par la suite créer moi un texte de 25 lignes pour chaques modules et sections de cette formation.",
+    temperature: 0.39,
+    max_tokens: 3841,
+    top_p: 1,
+    frequency_penalty: 0,
+    presence_penalty: 0,
+});
+*/

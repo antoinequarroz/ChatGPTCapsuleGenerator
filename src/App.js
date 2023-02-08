@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import Form from "./Component/forms";
 import Formular from "./Component/form_test";
+import RenderForm from "./Component/renderForm";
 function App() {
   return (
     <div className="App">
@@ -19,18 +19,13 @@ function App() {
         </a>
       </header>
 
-      <body>
-          <div className="App_form">
-                <h2 id="forms">
-                    Formulaire de création</h2>
-              <Form/>
-            </div>
-
-        <div className="App_form">
+       <body className="App_form">
             <h2 id="forms">
                 Formulaire de création</h2>
             <Formular/>
-        </div>
+            <br/>
+            <h2>Rendu de l'AI</h2>
+            <RenderForm/>
       </body>
 
         <footer>

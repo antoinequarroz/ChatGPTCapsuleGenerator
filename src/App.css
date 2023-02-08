@@ -8,13 +8,14 @@
 }
 
 .App-header {
+  text-align: center;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #fff;
 }
 
 .App-link {
@@ -74,10 +75,21 @@ label {
 
 h2 {
   color: white;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .App_footer {
   color: white;
   margin-bottom: 40px;
+}
+
+.Render_textaera {
+  width: calc(70%);
+  margin-bottom: 40px;
+  height: 500px;
+  margin-top: 1px;
+  border: 1px solid;
+  border-radius: 20px;
+  box-sizing: border-box;
+  text-align: left;
 }
