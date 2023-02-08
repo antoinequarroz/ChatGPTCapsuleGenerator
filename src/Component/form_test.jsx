@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Configuration, OpenAIApi} from "openai";
+import React, { useState, useEffect } from 'react';
 
 const Formular = () => {
     const [text, setText] = useState('');
@@ -7,6 +6,15 @@ const Formular = () => {
     const [select2, setSelect2] = useState('');
     const [select3, setSelect3] = useState('');
     const [select4, setSelect4] = useState('');
+    const [options, setOptions] = useState([]);
+
+    useEffect(() => {
+        const newOptions = [];
+        for (let i = 1; i <= 25; i++) {
+            newOptions.push(<option key={i} value={i}>{i}</option>);
+        }
+        setOptions(newOptions);
+    },[]);
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -45,18 +53,15 @@ const Formular = () => {
             </div>
 
             <div>
-                <label className="App_label">Temps de la capsule</label>
+                <label htmlFor="choix" className="App_label">Temps de la capsule</label>
                 <br/>
                     <select
+                        id="choix"
                         value={select1}
                         onChange={e => setSelect1(e.target.value)}
                         name="Temps Capsule"
                         placeholder="Temps de la capsule">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
+                        {options}
                     </select>
             </div>
 
