@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 function Form() {
     const [inputs, setInputs] = useState({
         input1: "",
@@ -29,7 +30,7 @@ function Form() {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": "Bearer <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>"
+                    "Authorization": "Bearer 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"
                 },
                 body: JSON.stringify({
                     prompt: `${inputs.input1} ${inputs.input2} ${inputs.input3} ${inputs.input4} ${inputs.input5} ${inputs.input6}`,
