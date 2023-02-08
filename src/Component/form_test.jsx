@@ -7,6 +7,8 @@ const Formular = () => {
     const [select3, setSelect3] = useState('');
     const [select4, setSelect4] = useState('');
     const [options, setOptions] = useState([]);
+    const [optionsModules, setOptionsModules] = useState([]);
+    const [optionsSections, setOptionsSections] = useState([]);
 
     useEffect(() => {
         const newOptions = [];
@@ -14,6 +16,22 @@ const Formular = () => {
             newOptions.push(<option key={i} value={i}>{i}</option>);
         }
         setOptions(newOptions);
+    },[]);
+
+    useEffect(() => {
+        const newOptionsModules = [];
+        for (let i = 1; i <= 5; i++) {
+            newOptionsModules.push(<option key={i} value={i}>{i}</option>);
+        }
+        setOptionsModules(newOptionsModules);
+    },[]);
+
+    useEffect(() => {
+        const newOptionsSections = [];
+        for (let i = 1; i <= 5; i++) {
+            newOptionsSections.push(<option key={i} value={i}>{i}</option>);
+        }
+        setOptionsSections(newOptionsSections);
     },[]);
 
     const handleSubmit = async e => {
@@ -25,9 +43,9 @@ const Formular = () => {
                     'Authorization': 'Bearer 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',
                     },
                 body: JSON.stringify({
-                prompt: `Crée moi une formation de ${select1} heures qui sera faite en capsules vidéo de ${select2} et ${select3} en  ${select4}. La thématique sera${text}.Propose-moi une table des matière et scénario. Et par la suite créer moi un texte de 25 lignes pour chaque modules et sections de cette formation.`,
-                    temperature: 0.39,
-                    max_tokens: 3841,
+                prompt: `Crée moi une formation de ${select1} heures qui sera faite en capsules vidéo de ${select2} modules de ${select3} sections en  ${select4}. La thématique sera ${text}.Propose-moi une table des matière et scénario. Et par la suite créer moi un texte de 25 lignes pour chaque modules et sections de cette formation. Avec une introduction, un objectifs, une bibliographie et une conclusion pour chaque modules.`,
+                    temperature: 0.3,
+                    max_tokens: 3890,
                     top_p: 1,
                     frequency_penalty: 0,
                     presence_penalty: 0,
@@ -72,9 +90,7 @@ const Formular = () => {
                             onChange={e => setSelect2(e.target.value)}
                             name="Nbr modules"
                             placeholder="Nombre de modules">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
+                            {optionsModules}
                     </select>
             </div>
 
@@ -86,9 +102,7 @@ const Formular = () => {
                         onChange={e => setSelect3(e.target.value)}
                         name="Nbr sections"
                         placeholder="Nombre de sections">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                        {optionsSections}
                     </select>
             </div>
 
