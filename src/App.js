@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Form from "./Component/forms";
+import Formular from "./Component/form_test";
 function App() {
   return (
     <div className="App">
@@ -24,6 +25,12 @@ function App() {
                     Formulaire de création</h2>
               <Form/>
             </div>
+
+        <div className="App_form">
+            <h2 id="forms">
+                Formulaire de création</h2>
+            <Formular/>
+        </div>
       </body>
 
         <footer>
