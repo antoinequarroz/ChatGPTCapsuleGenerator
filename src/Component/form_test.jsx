@@ -11,33 +11,26 @@ const Formular = () => {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        console.log('Réponses du formulaire :');
-        console.log(`Text : ${text}`);
-        console.log(`Select 1 : ${select1}`);
-        console.log(`Select 2 : ${select2}`);
-        console.log(`Select 3 : ${select3}`);
-        console.log(`Select 4 : ${select4}`);
-        console.log(`Select 5 : ${select5}`);
-
-        const { Configuration, OpenAIApi } = require("openai");
-
-        const configuration = new Configuration({
-            apiKey: process.env.OPENAI_API_KEY,
+        const response = await fetch('https://api.openai.com/v1/engines/text-davinci/jobs', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer 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',
+                    },
+                body: JSON.stringify({
+                prompt: `Crée moi une formation de ${select1} heures qui sera faite en capsules vidéo de ${select2} et ${select3} en  ${select5}. La thématique sera${text}.Propose-moi une table des matière et scénario. Et par la suite créer moi un texte de 25 lignes pour chaque modules et sections de cette formation.`,
+                    temperature: 0.39,
+                    max_tokens: 3841,
+                    top_p: 1,
+                    frequency_penalty: 0,
+                    presence_penalty: 0,
+            }),
         });
-        const openai = new OpenAIApi(configuration);
-
-        const response = await openai.createCompletion({
-            model: "text-davinci-003",
-            prompt: "Crée moi une formation de 25 heure (Ajouter l'input du formulaire à la place du nombre) qui sera faite en capsules vidéo de (Nbr de modules et de section) en (Langues). La thématique sera l'introduction à la santé digitale (Input 1 de la question). Propose moi une table des matière et scénario. Et par la suite créer moi un texte de 25 lignes pour chaques modules et sections de cette formation.",
-            temperature: 0.39,
-            max_tokens: 3841,
-            top_p: 1,
-            frequency_penalty: 0,
-            presence_penalty: 0,
-        });
+        const json = await response.json();
+        console.log(json.choices[0].text);
+    };
         // Faire une requête API vers OpenAI ici, en utilisant text, select1, select2, etc. pour construire la requête
         // Enregistrer la réponse dans un fichier texte
-    };
 
     return (
         <form className="mb-3" onSubmit={handleSubmit}>
@@ -96,7 +89,7 @@ const Formular = () => {
             </div>
 
             <div>
-                <label className="App_label">Langue</label>
+                <label className="App_label">Genre</label>
                 <br/>
                     <select
                         value={select4}
@@ -109,7 +102,7 @@ const Formular = () => {
             </div>
 
             <div>
-                <label className="App_label">Genre</label>
+                <label className="App_label">Langue</label>
                 <br/>
                     <select
                         value={select5}
