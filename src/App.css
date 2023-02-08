@@ -45,7 +45,6 @@ textarea {
   padding: 70px;
   margin-bottom: 40px;
   margin-top: 20px;
-  border: 1px solid;
   border-radius: 20px;
   box-sizing: border-box;
 }
@@ -55,7 +54,6 @@ select {
   padding: 10px;
   margin-bottom: 40px;
   margin-top: 20px;
-  border: 1px solid;
   border-radius: 20px;
   box-sizing: border-box;
 }
@@ -63,7 +61,6 @@ select {
 button[type="submit"] {
   width: 35%;
   padding: 10px;
-  border: 1px solid;
   border-radius: 20px;
   cursor: pointer;
 }
