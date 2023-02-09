@@ -42,7 +42,7 @@ const Form = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer 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',
+                'Authorization': '<API KEY>',
             },
             body: JSON.stringify({
                 prompt: `Crée moi une formation de ${select1} heures qui sera faite en capsules vidéo de ${select2} modules de ${select3} sections en  ${select4}. La thématique sera ${text}.Propose-moi une table des matière et scénario. Et par la suite créer moi un texte de 25 lignes pour chaque modules et sections de cette formation. Avec une introduction, un objectifs, une bibliographie et une conclusion pour chaque modules.`,
