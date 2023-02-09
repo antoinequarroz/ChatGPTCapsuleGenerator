@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Formular from "./Component/form_test";
+import Form from "./Component/form";
 import RenderForm from "./Component/renderForm";
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
        <body className="App_form">
             <h2 id="forms">
                 Formulaire de création</h2>
-            <Formular/>
+            <Form/>
             <br/>
             <h2>Rendu de l'AI</h2>
             <RenderForm/>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import {Configuration} from "openai";
 
-const Formular = () => {
+const Form = () => {
     const [text, setText] = useState('');
     const [select1, setSelect1] = useState('');
     const [select2, setSelect2] = useState('');
@@ -34,29 +35,29 @@ const Formular = () => {
         setOptionsSections(newOptionsSections);
     },[]);
 
+
     const handleSubmit = async e => {
         e.preventDefault();
         const response = await fetch('https://api.openai.com/v1/engines/text-davinci/jobs', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer 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',
-                    },
-                body: JSON.stringify({
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer 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',
+            },
+            body: JSON.stringify({
                 prompt: `Crée moi une formation de ${select1} heures qui sera faite en capsules vidéo de ${select2} modules de ${select3} sections en  ${select4}. La thématique sera ${text}.Propose-moi une table des matière et scénario. Et par la suite créer moi un texte de 25 lignes pour chaque modules et sections de cette formation. Avec une introduction, un objectifs, une bibliographie et une conclusion pour chaque modules.`,
-                    temperature: 0.3,
-                    max_tokens: 3890,
-                    top_p: 1,
-                    frequency_penalty: 0,
-                    presence_penalty: 0,
+                temperature: 0.3,
+                max_tokens: 3890,
+                top_p: 1,
+                frequency_penalty: 0,
+                presence_penalty: 0,
             }),
         });
         const json = await response.json();
         console.log(json.choices[0].text);
     };
-        // Faire une requête API vers OpenAI ici, en utilisant text, select1, select2, etc. pour construire la requête
-        // Enregistrer la réponse dans un fichier texte
-
+    // Faire une requête API vers OpenAI ici, en utilisant text, select1, select2, etc. pour construire la requête
+    // Enregistrer la réponse dans un fichier texte
     return (
         <form className="mb-3" onSubmit={handleSubmit}>
             <div>
@@ -124,4 +125,4 @@ const Formular = () => {
     );
 };
 
-export default Formular;
+export default Form;
