@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import {Configuration} from "openai";
 
 const Form = () => {
     const [text, setText] = useState('');
@@ -21,7 +20,7 @@ const Form = () => {
 
     useEffect(() => {
         const newOptionsModules = [];
-        for (let i = 1; i <= 5; i++) {
+        for (let i = 1; i <= 10; i++) {
             newOptionsModules.push(<option key={i} value={i}>{i}</option>);
         }
         setOptionsModules(newOptionsModules);
@@ -45,7 +44,7 @@ const Form = () => {
                 'Authorization': 'Bearer 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',
             },
             body: JSON.stringify({
-                prompt: `Crée moi une formation de ${select1} heures qui sera faite en capsules vidéo de ${select2} modules de ${select3} sections en  ${select4}. La thématique sera ${text}.Propose-moi une table des matière et scénario. Et par la suite créer moi un texte de 25 lignes pour chaque modules et sections de cette formation. Avec une introduction, un objectifs, une bibliographie et une conclusion pour chaque modules.`,
+                prompt: `Crée moi une formation de ${select1} heures qui sera faite en capsules vidéo de ${select2} modules de ${select3} sections en  ${select4}. La thématique sera ${text}.Propose-moi une table des matière et scénario. Et par la suite créer moi pour chaque modules et sections de cette formation. Avec une introduction, un objectifs, un texte d'explication, une bibliographie et une conclusion pour chaque modules.`,
                 temperature: 0.3,
                 max_tokens: 3890,
                 top_p: 1,
@@ -64,15 +63,15 @@ const Form = () => {
                 <label className="App_label">Thème de la capsule</label>
                 <br/>
                     <textarea
-                        name="Thème de la capsule"
+                        name="Thème de la capsule "
                         value={text}
                         onChange={e => setText(e.target.value)}
-                        placeholder="Thème de la capsule"
+                        placeholder="Thème de la capsule "
                     />
             </div>
 
             <div>
-                <label htmlFor="choix" className="App_label">Temps de la capsule</label>
+                <label htmlFor="choix" className="App_label">Temps de la capsule en heure</label>
                 <br/>
                     <select
                         id="choix"

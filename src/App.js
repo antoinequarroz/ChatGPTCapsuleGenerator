@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import Form from "./Component/form";
 import RenderForm from "./Component/renderForm";
+import ButtonLink from "./Component/ButtonLink";
+
 function App() {
   return (
     <div className="App">
@@ -26,6 +28,7 @@ function App() {
             <br/>
             <h2>Rendu de l'AI</h2>
             <RenderForm/>
+            <ButtonLink/>
       </body>
 
         <footer>
