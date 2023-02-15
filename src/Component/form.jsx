@@ -9,6 +9,7 @@ const Form = () => {
     const [options, setOptions] = useState([]);
     const [optionsModules, setOptionsModules] = useState([]);
     const [optionsSections, setOptionsSections] = useState([]);
+    const API_KEY = "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";
 
     useEffect(() => {
         const newOptions = [];
@@ -35,7 +36,35 @@ const Form = () => {
     },[]);
 
 
-    const handleSubmit = async e => {
+    async function callOpenAIAPI() {
+        console.log("Appelle l'API");
+
+        const APIBody = {
+            "model": "text-davinci-003",
+            "prompt": "Crée moi une formation de ${select1} heures qui sera faite en capsules vidéo de ${select2} modules de ${select3} sections en  ${select4}. La thématique sera ${text}.Propose-moi une table des matière et scénario. Et par la suite créer moi pour chaque modules et sections de cette formation. Avec une introduction, un objectifs, un texte d'explication, une bibliographie et une conclusion pour chaque modules.",
+            "temperature": 0.3,
+            "max_tokens": 3890,
+            "top_p": 1.0,
+            "frequency_penalty": 0.0,
+            "presence_penalty": 0.0
+        }
+
+        await fetch("https://api.openai.com/v1/completions", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer " + API_KEY,
+            },
+            body: JSON.stringify(APIBody)
+        }).then((data) =>{
+            return data.json();
+        }).then((data) => {
+            console.log(data);
+        });
+    }
+
+
+   /* const handleSubmit = async e => {
         e.preventDefault();
         const response = await fetch('https://api.openai.com/v1/engines/text-davinci/jobs', {
             method: 'POST',
@@ -54,11 +83,11 @@ const Form = () => {
         });
         const json = await response.json();
         console.log(json.choices[0].text);
-    };
+    };*/
     // Faire une requête API vers OpenAI ici, en utilisant text, select1, select2, etc. pour construire la requête
     // Enregistrer la réponse dans un fichier texte
     return (
-        <form className="mb-3" onSubmit={handleSubmit}>
+        <form className="mb-3" onSubmit={callOpenAIAPI}>
             <div>
                 <label className="App_label">Thème de la capsule</label>
                 <br/>
@@ -119,7 +148,7 @@ const Form = () => {
                             <option value="English">English</option>
                     </select>
             </div>
-            <button type="submit">Générer</button>
+            <button onClick={callOpenAIAPI} type="submit">Générer</button>
         </form>
     );
 };
